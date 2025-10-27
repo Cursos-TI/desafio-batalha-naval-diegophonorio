@@ -1,37 +1,80 @@
-# 🌊 Desafio Batalha Naval - MateCheck
+#include <stdio.h>
 
-Este repositório contém a solução para o Desafio de Programação Batalha Naval MateCheck, implementado em C. O desafio explora o uso de matrizes para simular um jogo de tabuleiro e o cálculo de áreas de efeito de habilidades.
+#define TAMANHO 5
+#define NAVIO_TAMANHO 3
 
-## 🎯 Níveis do Desafio
+int tabuleiro[TAMANHO][TAMANHO];
 
-O projeto está dividido em três seções principais dentro do arquivo `batalha_naval.c`, seguindo os níveis propostos:
+void inicializarTabuleiro() {
+    int i, j;
+    for (i = 0; i < TAMANHO; i++) {
+        for (j = 0; j < TAMANHO; j++) {
+            tabuleiro[i][j] = 0; // 0 = Água
+        }
+    }
+}
 
-### 🔰 Nível Novato: Posicionamento (5x5)
-* **Objetivo:** Criar um tabuleiro 5x5 e posicionar um navio vertical e um horizontal.
-* **Saída:** Exibição das coordenadas de cada parte dos navios.
+void posicionarNavioHorizontal() {
+    int linha_inicio = 1;
+    int coluna_inicio = 0;
+    int k;
+    
+    printf("\n-- Posicionamento Navio Horizontal (Tamanho %d) --\n", NAVIO_TAMANHO);
+    for (k = 0; k < NAVIO_TAMANHO; k++) {
+        if (coluna_inicio + k < TAMANHO) {
+            tabuleiro[linha_inicio][coluna_inicio + k] = 1;
+            printf("Coordenada: (%d, %d)\n", linha_inicio, coluna_inicio + k);
+        }
+    }
+}
 
-### 🗺️ Nível Aventureiro: Expansão e Diagonais (10x10)
-* **Objetivo:** Expandir para um tabuleiro 10x10 e posicionar navios na vertical, horizontal e **duas diagonais**.
-* **Saída:** Exibição do tabuleiro completo (0=vazio, 3=ocupado).
+void posicionarNavioVertical() {
+    int linha_inicio = 0;
+    int coluna_inicio = 4;
+    int k;
 
-### ⚔️ Nível Mestre: Habilidades Especiais (Matrizes)
-* **Objetivo:** Implementar a lógica de três habilidades especiais usando a Distância de Manhattan e estruturas de repetição aninhadas.
-* **Habilidades Implementadas:**
-    1.  Cruz
-    2.  Octaedro (Losango/Diamante)
-    3.  Cone
-* **Saída:** Exibição do tabuleiro para cada habilidade (0=não afetado, 1=atingido).
+    printf("\n-- Posicionamento Navio Vertical (Tamanho %d) --\n", NAVIO_TAMANHO);
+    for (k = 0; k < NAVIO_TAMANHO; k++) {
+        if (linha_inicio + k < TAMANHO) {
+            tabuleiro[linha_inicio + k][coluna_inicio] = 1;
+            printf("Coordenada: (%d, %d)\n", linha_inicio + k, coluna_inicio);
+        }
+    }
+}
 
-## 🛠️ Como Compilar e Executar
+void exibirTabuleiro() {
+    int i, j;
+    printf("\n--- Tabuleiro (%dx%d) ---\n", TAMANHO, TAMANHO);
+    printf("  ");
+    for (j = 0; j < TAMANHO; j++) {
+        printf(" %d", j);
+    }
+    printf("\n");
 
-Para rodar este código, você precisa de um compilador C (como o GCC).
+    for (i = 0; i < TAMANHO; i++) {
+        printf("%d ", i);
+        for (j = 0; j < TAMANHO; j++) {
+            if (tabuleiro[i][j] == 1) {
+                printf(" N");
+            } else {
+                printf(" ~");
+            }
+        }
+        printf("\n");
+    }
+    printf("---------------------------\n");
+}
 
-1.  **Compile o arquivo:**
-    ```bash
-    gcc batalha_naval.c -o batalha_naval
-    ```
-
-2.  **Execute o programa:**
-    ```bash
-    ./batalha_naval
-    ```
+int main() {
+    
+    printf("🤖 Iniciando o Desafio Batalha Naval - Nível Novato...\n");
+    
+    inicializarTabuleiro();
+    
+    posicionarNavioHorizontal();
+    posicionarNavioVertical();
+    
+    exibirTabuleiro();
+    
+    return 0;
+}
