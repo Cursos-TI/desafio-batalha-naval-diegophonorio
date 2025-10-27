@@ -1,40 +1,37 @@
-#include <stdio.h>
+# 🌊 Desafio Batalha Naval - MateCheck
 
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
+Este repositório contém a solução para o Desafio de Programação Batalha Naval MateCheck, implementado em C. O desafio explora o uso de matrizes para simular um jogo de tabuleiro e o cálculo de áreas de efeito de habilidades.
 
-int main() {
-    // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+## 🎯 Níveis do Desafio
 
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+O projeto está dividido em três seções principais dentro do arquivo `batalha_naval.c`, seguindo os níveis propostos:
 
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
+### 🔰 Nível Novato: Posicionamento (5x5)
+* **Objetivo:** Criar um tabuleiro 5x5 e posicionar um navio vertical e um horizontal.
+* **Saída:** Exibição das coordenadas de cada parte dos navios.
 
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
+### 🗺️ Nível Aventureiro: Expansão e Diagonais (10x10)
+* **Objetivo:** Expandir para um tabuleiro 10x10 e posicionar navios na vertical, horizontal e **duas diagonais**.
+* **Saída:** Exibição do tabuleiro completo (0=vazio, 3=ocupado).
 
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
+### ⚔️ Nível Mestre: Habilidades Especiais (Matrizes)
+* **Objetivo:** Implementar a lógica de três habilidades especiais usando a Distância de Manhattan e estruturas de repetição aninhadas.
+* **Habilidades Implementadas:**
+    1.  Cruz
+    2.  Octaedro (Losango/Diamante)
+    3.  Cone
+* **Saída:** Exibição do tabuleiro para cada habilidade (0=não afetado, 1=atingido).
 
-    return 0;
-}
+## 🛠️ Como Compilar e Executar
+
+Para rodar este código, você precisa de um compilador C (como o GCC).
+
+1.  **Compile o arquivo:**
+    ```bash
+    gcc batalha_naval.c -o batalha_naval
+    ```
+
+2.  **Execute o programa:**
+    ```bash
+    ./batalha_naval
+    ```
